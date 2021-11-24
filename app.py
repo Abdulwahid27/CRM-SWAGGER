@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask
 from flask_restful import Api
 from models import user,client,projects,activities,sales,attendance,profit,leads,task
 from resources.client import Client,ClientList,SpecificClient,ClientName,FilterByName,ClientStatus
@@ -12,6 +12,8 @@ from resources.sales import Sales,Sale,SpecificSale,FilterAmount
 from resources.attendance import Attendance,specificAttendance,Attendance_by_date,AttendanceUpdation
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
+from flask_migrate import Migrate
+from db import db
 
 
 app=Flask(__name__)
@@ -20,15 +22,15 @@ api=Api(app)
 
 app.secret_key='1234'
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///info.db'
+
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://wahid:123@localhost/info'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
+db.init_app(app)
+migrate=Migrate(app,db)
 
 
 jwt = JWTManager(app)
@@ -118,6 +120,4 @@ api.add_resource(filtername,'/task/<string:name>')
 
 
 if __name__=='__main__':
-    from db import db
-    db.init_app(app)
     app.run(debug=True)

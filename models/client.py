@@ -13,6 +13,7 @@ class ClientModel(db.Model):
     status=db.Column(db.String)
     description=db.Column(db.Text)
 
+
     projects = db.relationship('ProjectModel', lazy='dynamic')
     activities=db.relationship('ActivitiesModel',lazy='dynamic')
 
