@@ -28,8 +28,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
-
-db.init_app(app)
 migrate=Migrate(app,db)
 
 
@@ -119,5 +117,3 @@ api.add_resource(TaskByDate,'/tasks/<string:date>')
 api.add_resource(filtername,'/task/<string:name>')
 
 
-if __name__=='__main__':
-    app.run(debug=True)
