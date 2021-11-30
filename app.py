@@ -13,7 +13,6 @@ from resources.attendance import Attendance,specificAttendance,Attendance_by_dat
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
-from db import db
 
 
 app=Flask(__name__)
@@ -28,7 +27,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
-migrate=Migrate(app,db)
+
+
+
 
 
 jwt = JWTManager(app)
@@ -117,3 +118,7 @@ api.add_resource(TaskByDate,'/tasks/<string:date>')
 api.add_resource(filtername,'/task/<string:name>')
 
 
+if __name__=='__main__':
+    from db import db
+    db.init_app(app)
+    app.run(debug=True)
