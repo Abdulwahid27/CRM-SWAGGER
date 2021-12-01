@@ -12,7 +12,7 @@ from resources.sales import Sales,Sale,SpecificSale,FilterAmount
 from resources.attendance import Attendance,specificAttendance,Attendance_by_date,AttendanceUpdation
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
-from flask_migrate import Migrate
+
 
 
 app=Flask(__name__)
