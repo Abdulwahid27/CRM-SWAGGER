@@ -13,6 +13,8 @@ from resources.attendance import Attendance,specificAttendance,Attendance_by_dat
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
+from db import db
+
 
 
 
@@ -35,6 +37,10 @@ app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
 
 jwt = JWTManager(app)
+
+
+db.init_app(app)
+migrate = Migrate(app, db)
 
 
 
@@ -123,7 +129,4 @@ api.add_resource(filtername,'/task/<string:name>')
 
 
 if __name__=='__main__':
-    from db import db
-    db.init_app(app)
-    migrate = Migrate(app, db)
     app.run(debug=True)
