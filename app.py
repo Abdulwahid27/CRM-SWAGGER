@@ -15,8 +15,10 @@ from blacklist import BLACKLIST
 
 
 
+
 app=Flask(__name__)
 api=Api(app)
+
 
 
 app.secret_key='1234'
@@ -31,8 +33,8 @@ app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
 
 
-
 jwt = JWTManager(app)
+
 
 @jwt.token_in_blacklist_loader
 def check_if_token_in_blacklist(decrypted_token):
