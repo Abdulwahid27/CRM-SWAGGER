@@ -38,7 +38,6 @@ class Projects(Resource):
         return project.json(), 201
 
 class ProjectsList(Resource):
-    @jwt_required
     def get(self):
         projects=[project.json() for project in ProjectModel.find_by_all()]
         return {"projects":projects}
