@@ -14,7 +14,7 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
 from db import db
-import psycopg2
+
 
 
 
@@ -25,12 +25,7 @@ import psycopg2
 app=Flask(__name__)
 api=Api(app)
 
-conn=psycopg2.connect(
-  database="info",
-  user="wahid",
-  host="localhost",
-  password="123"
-)
+
 
 
 app.secret_key='1234'
