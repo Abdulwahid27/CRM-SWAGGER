@@ -25,6 +25,12 @@ import psycopg2
 app=Flask(__name__)
 api=Api(app)
 
+conn=psycopg2.connect(
+  database="info",
+  user="wahid",
+  host="localhost",
+  password="123"
+)
 
 
 app.secret_key='1234'
@@ -35,12 +41,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
-conn=psycopg2.connect(
-  database="info",
-  user="wahid",
-  host="localhost",
-  password="123"
-)
 
 
 jwt = JWTManager(app)
