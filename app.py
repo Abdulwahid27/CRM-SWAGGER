@@ -14,6 +14,7 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
 from db import db
+import psycopg2
 
 
 
@@ -34,6 +35,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
 
+conn=psycopg2.connect(
+  database="info",
+  user="wahid",
+  host="localhost",
+  password="123"
+)
 
 
 jwt = JWTManager(app)
