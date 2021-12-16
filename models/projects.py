@@ -59,12 +59,6 @@ class ProjectModel(db.Model):
         names = [x.json() for x in query]
         return names
 
-    # @classmethod
-    # def profit_calculation(cls, name):
-    #     query = cls.query.filter(ProjectModel.name.like('%{}%'.format(name))).all()
-    #     names = [x['profit'] for x in query]
-    #     return names
-
 
     def save_to_db(self):
         db.session.add(self)
