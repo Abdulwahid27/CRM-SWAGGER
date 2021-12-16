@@ -19,12 +19,6 @@ from db import db
 
 
 
-
-
-
-
-
-
 app=Flask(__name__)
 api=Api(app)
 
@@ -33,7 +27,7 @@ api=Api(app)
 
 app.secret_key='1234'
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://wahid:123@localhost/info'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://wahid:123@127.0.0.1/info'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
