@@ -14,6 +14,9 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
 from db import db
+import psycopg2
+
+
 
 
 
@@ -30,6 +33,8 @@ api=Api(app)
 
 app.secret_key='1234'
 
+conn = psycopg2.connect(dbname="info", user="wahid", password="123",host="127.0.0.1",port="5432")
+conn.close()
 
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://wahid:123@localhost/info'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
