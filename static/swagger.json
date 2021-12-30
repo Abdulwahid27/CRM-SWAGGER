@@ -328,47 +328,47 @@
               }
             }
           }
-        }
-      },
-      "produces": [
-        "application/json"
-      ],
-      "parameters": [
-        {
-          "name": "body",
-          "in": "body",
-          "description": "create sales",
-          "required": true,
-          "type": "string",
-          "schema": {
-            "$ref": "#/definitions/Sales"
-          }
         },
-        {
-          "name": "Authorization",
-          "in": "header",
-          "description": "Authorization token",
-          "required": true,
-          "type": "string",
-          "schema": {
-            "$ref": "#/definitions/Sales"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "OK",
-          "schema": {
-            "$ref": "#/definitions/Sales"
-          },
-          "headers": {
-            "Authorization": {
-              "description": "token",
-              "type": "string"
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "create sales",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Sales"
             }
           },
-          "400": {
-            "description": "Failed. Bad post data."
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Sales"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Sales"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
           }
         }
       },
