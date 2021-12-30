@@ -10,6 +10,8 @@ from flask_jwt_extended import (create_access_token,
 from models.user import UserModel
 from blacklist import BLACKLIST
 
+
+
 _user_parser = reqparse.RequestParser()
 _user_parser.add_argument("username",
                     type=str,
@@ -27,7 +29,7 @@ _user_parser.add_argument("role",
                     help='Enter a role')
 
 _user_parser.add_argument("project_id",
-                    type=str,
+                    type=int,
                     required=True,
                     help='Enter a project id')
 
@@ -66,17 +68,24 @@ class UserRegister(Resource):
 
 
 class User(Resource):
-    @classmethod
     @jwt_required
-    def get(cls, user_id):
+    def get(self, user_id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         user = UserModel.find_by_id(user_id)
         if user:
             return user.json()
         return {"message":"No user found"},400
 
 
-    @classmethod
+    @jwt_required
     def delete(cls,user_id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         user=UserModel.find_by_id(user_id)
         if user:
             user.delete_from_db()

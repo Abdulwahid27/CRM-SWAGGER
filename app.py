@@ -1,8 +1,8 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 from flask_restful import Api
 from models import user,client,projects,activities,sales,attendance,leads,task
-from resources.client import Client,ClientList,SpecificClient,ClientName,FilterByName,ClientStatus
-from resources.projects import Projects,ProjectsList,ProjectDomain,SpecificProject,ProjectId,Filter,FilterProfit
+from resources.client import Client,SpecificClient,ClientName,FilterByName,ClientStatus
+from resources.projects import Projects,ProjectDomain,SpecificProject,ProjectId,Filter,FilterProfit
 from resources.user import User,UserLogin,UserLogout,UserRegister,TokenRefresh,Admin
 from resources.leads import Leads,SpecificLead
 from resources.activities import Activity,ActivitiesList,SpecificActivity,Activityid
@@ -13,8 +13,7 @@ from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from flask_migrate import Migrate
 from db import db
-
-
+from flask_swagger_ui import get_swaggerui_blueprint
 
 
 
@@ -30,6 +29,24 @@ app.config['SQLALCHEMY_DATABASE_URI']='postgresql://mqcrooqblxiyhl:556c8cb12388e
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS']=['access','refresh']
+
+
+
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+
+    config={
+        'app_name': "CRM"
+    }
+)
+
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+
+
+
 
 
 
@@ -77,18 +94,16 @@ def Revoked_token_callback():
 
 
 api.add_resource(Client,'/clients')
-api.add_resource(ClientList,'/clients')
 api.add_resource(ClientName,'/clients/name/<string:name>')
 api.add_resource(SpecificClient,'/clients/<int:id>')
 api.add_resource(FilterByName,'/clients/search/<string:name>')
 api.add_resource(ClientStatus,'/clients/status/<string:status>')
 
-api.add_resource(Projects,'/projects/name/domain')
+api.add_resource(Projects,'/projects')
 api.add_resource(ProjectDomain,'/projects/domain/<string:domain>')
 api.add_resource(SpecificProject,'/projects/name/<string:name>')
-api.add_resource(ProjectsList,'/projects')
 api.add_resource(ProjectId,'/projects/<int:id>')
-api.add_resource(Filter,'/projects/search/<string:name>')
+api.add_resource(Filter,'/projects/filter/<string:name>')
 
 
 api.add_resource(UserRegister,'/Register')
@@ -98,10 +113,10 @@ api.add_resource(TokenRefresh,'/refresh')
 api.add_resource(UserLogout,'/logout')
 api.add_resource(Admin,'/Registeradmin')
 
-api.add_resource(Activity,'/activity')
+api.add_resource(Activity,'/activities/create')
 api.add_resource(ActivitiesList,'/activities')
-api.add_resource(SpecificActivity,'/activity/<string:date>')
-api.add_resource(Activityid,'/activity/<int:id>')
+api.add_resource(SpecificActivity,'/activities/<string:date>')
+api.add_resource(Activityid,'/activities/<int:id>')
 
 
 api.add_resource(Sales,'/sales')
@@ -113,6 +128,7 @@ api.add_resource(Attendance,'/attendance')
 api.add_resource(specificAttendance,'/attendance/<int:id>')
 api.add_resource(Attendance_by_date,'/attendance/<string:date>')
 api.add_resource(AttendanceUpdation,'/attendance/<int:id>/<string:date>')
+
 api.add_resource(FilterProfit,'/profit/<string:name>')
 
 

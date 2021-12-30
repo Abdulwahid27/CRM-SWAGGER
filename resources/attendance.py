@@ -1,7 +1,7 @@
 from flask_restful import Resource,reqparse
 from models.attendance import AttendanceModel
 from datetime import datetime
-from datetime import timedelta
+from flask_jwt_extended import jwt_required,get_jwt_claims
 
 
 
@@ -24,6 +24,7 @@ parser.add_argument("user_id",
 
 
 class Attendance(Resource):
+    @jwt_required
     def post(self):
         data=parser.parse_args()
         try:
@@ -52,20 +53,34 @@ class Attendance(Resource):
             return attendance.json(),201
         return {"message":"Invalid input for attendance"}
 
-
+    @jwt_required
     def get(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         attendance=[attend.json() for attend in AttendanceModel.find_by_all()]
         return {"Attendance":attendance}
 
 
 class specificAttendance(Resource):
+    @jwt_required
     def get(self,id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         attend=AttendanceModel.find_by_user_id(id)
         if attend:
             return attend
         return {"error":"No attendance found of user {}".format(id)},400
 
+    @jwt_required
     def delete(self,id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         attend=AttendanceModel.find_by_id(id)
         if attend:
             attend.delete_from_db()
@@ -75,7 +90,12 @@ class specificAttendance(Resource):
 
 
 class Attendance_by_date(Resource):
+    @jwt_required
     def get(self,date):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         try:
             converted_date = datetime.strptime(date,'%m-%d-%Y').date()
         except:
@@ -87,7 +107,12 @@ class Attendance_by_date(Resource):
 
 
 class AttendanceUpdation(Resource):
+    @jwt_required
     def put(self,id,date):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         data=parser.parse_args()
         try:
             current_date = datetime.now()

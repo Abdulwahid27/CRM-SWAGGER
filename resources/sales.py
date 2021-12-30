@@ -1,6 +1,7 @@
 from flask_restful import Resource,reqparse
 from models.sales import SalesModel
 from datetime import datetime
+from flask import Blueprint
 
 
 from flask_jwt_extended import jwt_required,get_jwt_claims
@@ -34,35 +35,42 @@ parser.add_argument("date",
                     required=True,
                     help="Enter date of sale")
 
-parser.add_argument("profit",
+parser.add_argument("percentage_profit",
                     type=int,
                     required=True,
                     help="Enter profit of project")
 
 parser.add_argument("project_id",
-                    type=str,
+                    type=int,
                     required=True,
                     help="Enter project id of sale")
 
 
 class Sales(Resource):
+    @jwt_required
     def post(self):
+        claims = get_jwt_claims()
 
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
 
-        # if not claims['is_admin']:
-        #     return {"message": "Admin privelege required"}
         data=parser.parse_args()
         try:
             date_obj=datetime.strptime(data['date'],'%m-%d-%Y').date()
         except:
             return {"message":"Enter correct date format"},400
         sale=SalesModel(data['proposed_amount'],data['finalized_amount'],data['status'],data['description'],
-                        date_obj,data['profit'],data['project_id'])
+                        date_obj,data['percentage_profit'],data['project_id'])
         sale.save_to_db()
         return sale.json()
 
     @jwt_required
     def get(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         sales = [sale.json() for sale in SalesModel.find_by_all()]
         return {"Sales":sales}
 
@@ -129,7 +137,7 @@ class SpecificSale(Resource):
             sale.status=data['status']
             sale.project_id=data['project_id']
             sale.description=data['description']
-            sale.profit=data['profit']
+            sale.percentage_profit=data['percentage_profit']
             sale.save_to_db()
             return sale.json()
         return {"message":"no sale with id {}".format(id)},400

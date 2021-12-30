@@ -27,9 +27,14 @@ parser.add_argument("description",
                     help="Enter Description of client")
 
 
-
 class Projects(Resource):
+    @jwt_required
     def post(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         data=parser.parse_args()
 
 
@@ -37,14 +42,24 @@ class Projects(Resource):
         project.save_to_db()
         return project.json(), 201
 
-class ProjectsList(Resource):
+    @jwt_required
     def get(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         projects=[project.json() for project in ProjectModel.find_by_all()]
         return {"projects":projects}
 
 class SpecificProject(Resource):
     @jwt_required
     def get(self,name):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         projects=ProjectModel.find_by_project_name(name)
         if projects:
             return projects
@@ -68,6 +83,11 @@ class SpecificProject(Resource):
 class ProjectDomain(Resource):
     @jwt_required
     def get(self,domain):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         projects=ProjectModel.find_by_project_domain(domain)
         if projects:
             return projects
@@ -75,9 +95,13 @@ class ProjectDomain(Resource):
 
 
 class ProjectId(Resource):
-
     @jwt_required
     def get(self,id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         projects=ProjectModel.find_by_id(id)
         if projects:
             return projects.json()
@@ -90,6 +114,7 @@ class ProjectId(Resource):
 
         if not claims['is_admin']:
             return {"message": "Admin privelege required"}
+
         projects = ProjectModel.find_by_id(id)
         if projects:
             projects.delete_from_db()
@@ -103,6 +128,7 @@ class ProjectId(Resource):
 
         if not claims['is_admin']:
             return {"message": "Admin privelege required"}
+
         data=parser.parse_args()
         projects = ProjectModel.find_by_id(id)
         if projects:
@@ -119,6 +145,11 @@ class Filter(Resource):
 
     @jwt_required
     def get(self,name):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         client=ProjectModel.filter_by_name(name)
         if client:
             return client
@@ -126,8 +157,15 @@ class Filter(Resource):
 
 
 class FilterProfit(Resource):
+
+    @jwt_required
     def get(self,name):
-        profit=ProjectModel.profit_by_name(name)
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
+        profit=ProjectModel.find_by_project_name(name)
         if profit:
             calculation = [x.json() for x in profit.sales]
 

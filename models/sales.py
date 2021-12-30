@@ -10,25 +10,25 @@ class SalesModel(db.Model):
     status=db.Column(db.String)
     description=db.Column(db.Text)
     date=db.Column(db.Date)
-    profit=db.Column(db.Integer)
+    percentage_profit=db.Column(db.Integer)
 
     project_id=db.Column(db.Integer,db.ForeignKey('Projects.id'),unique=True)
     projects=db.relationship('ProjectModel')
 
 
-    def __init__(self,proposed_amount,finalized_amount,status,description,date,profit,project_id):
+    def __init__(self,proposed_amount,finalized_amount,status,description,date,percentage_profit,project_id):
         self.proposed_amount=proposed_amount
         self.finalized_amount=finalized_amount
         self.status=status
         self.description=description
         self.date=date
-        self.profit=profit
+        self.percentage_profit=percentage_profit
         self.project_id=project_id
 
 
     def json(self):
         return {"id":self.id,"proposed_amount":self.proposed_amount,"finalized_amount":self.finalized_amount,"status":self.status,
-                "description":self.description,"date":str(self.date),"percentage_profit":self.profit,"project_id":self.project_id}
+                "description":self.description,"date":str(self.date),"percentage_profit":self.percentage_profit,"project_id":self.project_id}
 
 
 

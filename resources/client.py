@@ -4,6 +4,7 @@ import re
 from flask_jwt_extended import jwt_required,get_jwt_claims
 
 
+
 user_parser=reqparse.RequestParser()
 
 user_parser.add_argument("name",
@@ -46,7 +47,13 @@ user_parser.add_argument("description",
 
 
 class Client(Resource):
+    @jwt_required
     def post(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         data=user_parser.parse_args()
         email_pattern='^[a-zA-z 0-9]+[\._]?[a-zA-z 0-9]+[@]\w+[.]\w{3,7}$'
         if re.search(email_pattern,data['email']):
@@ -72,8 +79,12 @@ class Client(Resource):
         return {"error":"Invalid input for gender!"},400
 
 
-class ClientList(Resource):
+    @jwt_required
     def get(self):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
         clients=[client.json() for client in ClientModel.find_by_all()]
         return {"Clients":clients}
 
@@ -112,8 +123,13 @@ class SpecificClient(Resource):
             return {"MESSAGE":"client {} with id {} deleted".format(client.name,id)}
         return {"MESSAGE":"No client with id {}".format(id)},400
 
-
+    @jwt_required
     def put(self,id):
+        claims = get_jwt_claims()
+
+        if not claims['is_admin']:
+            return {"message": "Admin privelege required"}
+
         data=user_parser.parse_args()
         client=ClientModel.find_by_id(id)
         email_pattern = '^[a-zA-z 0-9]+[\._]?[a-zA-z 0-9]+[@]\w+[.]\w{3,7}$'

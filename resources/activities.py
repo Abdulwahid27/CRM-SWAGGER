@@ -1,10 +1,11 @@
 from flask_restful import Resource,reqparse
 from models.activities import ActivitiesModel
 from datetime import datetime
-
 from flask_jwt_extended import jwt_required,get_jwt_claims
 
+
 parser=reqparse.RequestParser()
+
 
 parser.add_argument("type",
                     type=str,
@@ -33,7 +34,6 @@ parser.add_argument("client_id",
 
 
 class Activity(Resource):
-
     @jwt_required
     def post(self):
         claims = get_jwt_claims()

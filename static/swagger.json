@@ -1,0 +1,2661 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CRM",
+    "description": "CRM API for beginners",
+    "contact": {
+      "email": "aw3899965@gmail.com",
+      "url": "https://www.facebook.com/abdul.ahmed55"
+    },
+    "termsOfService": "https://www.facebook.com/abdul.ahmed55",
+    "version": "1.0"
+  },
+  "paths": {
+    "/activities": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "Returns activities",
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Activities"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ]
+      }
+    },
+    "/activities/create": {
+      "post": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "Create a new activity",
+        "RequestBody": {
+          "description": "OK",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Activities"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "create Activities",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/activities/{date}": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "Returns activities of specified date",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "find activities by date",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ]
+      }
+    },
+    "/activities/{id}": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "Returns activities of specified id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "deletes activities by specified id",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "deletes activities of specified id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "deletes activities by id",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Activities"
+        ],
+        "summary": "updates activities with specified id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": " enter id",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "updation of activities with specified id",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Activities"
+            }
+          }
+        ]
+      }
+    },
+    "/sales": {
+      "post": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Create a new sale",
+        "RequestBody": {
+          "description": "OK",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            }
+          }
+        }
+      },
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "description": "create sales",
+          "required": true,
+          "type": "string",
+          "schema": {
+            "$ref": "#/definitions/Sales"
+          }
+        },
+        {
+          "name": "Authorization",
+          "in": "header",
+          "description": "Authorization token",
+          "required": true,
+          "type": "string",
+          "schema": {
+            "$ref": "#/definitions/Sales"
+          }
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Sales"
+          },
+          "headers": {
+            "Authorization": {
+              "description": "token",
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Returns Sales",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Sales"
+            },
+            "headers": {
+              "Authorization": {
+                "description": "token",
+                "type": "string"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/Sales"
+            }
+          }
+        ]
+      }
+    },
+      "/sales/{date}": {
+        "get": {
+          "tags": [
+            "Sales"
+          ],
+          "summary": "Returns sales of specified date",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "description": "Find Sales by date",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            }
+          ]
+        }
+      },
+      "/sales/{id}": {
+        "get": {
+          "tags": [
+            "Sales"
+          ],
+          "summary": "Returns sales of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              },
+                "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes sales by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Sales"
+          ],
+          "summary": "deletes sales of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes activities by id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            },
+                {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Sales"
+          ],
+          "summary": "updates sales with specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of sales with specified id",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            },
+
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Sales"
+              }
+            }
+          ]
+        }
+      },
+      "/leads": {
+        "post": {
+          "tags": [
+            "Leads"
+          ],
+          "summary": "Create a new lead",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Leads"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "create leads",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            },
+              {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Leads"
+          ],
+          "summary": "Returns leads",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            }
+          ]
+        }
+      },
+      "/leads/{id}": {
+        "get": {
+          "tags": [
+            "Leads"
+          ],
+          "summary": "Returns leads of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes sales by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Leads"
+          ],
+          "summary": "Deletes Leads of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes Leads by id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Leads"
+          ],
+          "summary": "updates Leads with specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of Leads with specified id",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Leads"
+              }
+            }
+          ]
+        }
+      },
+      "/tasks": {
+        "post": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "Create a new Task",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Tasks"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "create tasks",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+                "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "Returns tasks",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+            ]
+        }
+      },
+      "/tasks/{id}": {
+        "get": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "Returns tasks of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes tasks by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "deletes Tasks of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes Tasks by id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+                {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "updates Tasks with specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of Tasks with specified id",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+                {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+          ]
+        }
+      },
+      "/tasks/{date}": {
+        "get": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "Returns tasks of specified date",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "description": "Find Tasks by date",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+             {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+          ]
+        }
+      },
+      "/task/{name}": {
+        "get": {
+          "tags": [
+            "Tasks"
+          ],
+          "summary": "Returns tasks of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find tasks by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            },
+             {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              }
+            }
+          ]
+        }
+      },
+      "/attendance": {
+        "post": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "posts attendance",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Attendance"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "post attendance",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+             {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "Returns attendance",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ]
+        }
+      },
+      "/attendance/{id}": {
+        "get": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "Returns attendance of specified user id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes attendance by specified user id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "deletes attendance of specified user id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes attendance by user id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+              {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ]
+        }
+      },
+      "/attendance/{date}": {
+        "get": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "Returns attendance of specified date",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "description": "Find attendance by date",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+              {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ]
+        }
+      },
+      "/attendance/{id}/{date}": {
+        "put": {
+          "tags": [
+            "Attendance"
+          ],
+          "summary": "updates attendance with specified user id and date",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+            {
+              "name": "date",
+              "in": "path",
+              "description": " enter date",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of attendance ",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            },
+                {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Attendance"
+              }
+            }
+          ]
+        }
+      },
+      "/projects": {
+        "post": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "posts a new project",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Projects"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "create projects",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns Projects",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
+      "/projects/name/{name}": {
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find projects by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find projects by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        }
+      },
+      "/projects/domain/{domain}": {
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "domain",
+              "in": "path",
+              "description": "Find projects by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        }
+      },
+      "/projects/{id}": {
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " projects by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "deletes projects of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tasks"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes Tasks by id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "updates projects with specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of projects with specified id",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+             {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        }
+      },
+      "/projects/filter/{name}": {
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find projects by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+               {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        }
+      },
+      "/profit/{name}": {
+        "get": {
+          "tags": [
+            "Projects"
+          ],
+          "summary": "Returns projects of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find projects by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            },
+             {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+          ]
+        }
+      },
+      "/clients": {
+        "post": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Posts a new client",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Clients"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Enter client info",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Returns Clients",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ]
+        }
+      },
+      "/clients/name/{name}": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Returns clients of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find clients by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        }
+      },
+      "/clients/{id}": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Returns clients of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " Clients by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "deletes clients of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "deletes clients by id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "updates clients with specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " enter id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "updation of clients with specified id",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        }
+      },
+      "/clients/search/{name}": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Returns clients of specified name",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Find clients by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        }
+      },
+      "/clients/status/{status}": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Returns clients of specified status",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "path",
+              "description": "Find clients by status",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+          ]
+        }
+      },
+      "/Register": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Create a new user",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "create user",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      },
+      "/user/{id}": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Returns User of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " User by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": " token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Deletes User of specified id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " User by specified id",
+              "required": true,
+              "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ]
+        }
+      },
+      "/login/{username}/{password}": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "login for existing user",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "description": "enter user credentials",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            {
+              "name": "password",
+              "in": "path",
+              "description": "enter user credentials",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      },
+      "/refresh": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Generates Refresh token",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      },
+      "/logout": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "logs out user",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          },
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ]
+        }
+      },
+      "/Registeradmin": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Registers a new Admin",
+          "RequestBody": {
+            "description": "OK",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Admin info",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Activities": {
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "client_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Sales": {
+        "properties": {
+          "proposed_amount": {
+            "type": "integer"
+          },
+          "finalized_amount": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "percentage_profit": {
+            "type": "integer"
+          },
+          "project_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Leads": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "Tasks": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "deadline": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Attendance": {
+        "properties": {
+          "attendance": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "user_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Projects": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "client_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Clients": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "project_id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+

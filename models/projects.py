@@ -43,10 +43,9 @@ class ProjectModel(db.Model):
 
 
     @classmethod
-    def profit_by_name(cls,name):
+    def find_by_project_name(cls,name):
         query= cls.query.filter_by(name=name).first()
         return query
-
 
 
     @classmethod
