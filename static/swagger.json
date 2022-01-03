@@ -136,10 +136,7 @@
                 "type": "string"
               }
             }
-          },
-           "401": {
-              "description": "Authorization header is missing or invalid."
-            }
+          }
         },
         "produces": [
           "application/json"
