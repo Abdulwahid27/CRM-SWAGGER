@@ -136,7 +136,10 @@
                 "type": "string"
               }
             }
-          }
+          },
+           "401": {
+              "description": "Authorization header is missing or invalid."
+            }
         },
         "produces": [
           "application/json"
@@ -1564,7 +1567,19 @@
           },
           "produces": [
             "application/json"
-          ]
+          ],
+           "parameters": [
+            {
+              "name": "Authorization",
+              "in": "body",
+              "description": "create projects",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Projects"
+              }
+            }
+           ]
         }
       },
       "/projects/name/{name}": {
@@ -1786,7 +1801,7 @@
               "in": "header",
               "description": "Authorization token",
               "required": true,
-              "type": "integer",
+              "type": "string",
               "schema": {
                 "$ref": "#/definitions/Projects"
               }
@@ -1973,6 +1988,16 @@
               "schema": {
                 "$ref": "#/definitions/Clients"
               }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
             }
           ],
           "responses": {
@@ -1980,6 +2005,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             },
             "400": {
@@ -1997,12 +2028,30 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
           "produces": [
             "application/json"
-          ]
+          ],
+           "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            }
+           ]
         }
       },
       "/clients/name/{name}": {
@@ -2016,6 +2065,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2027,6 +2082,16 @@
               "name": "name",
               "in": "path",
               "description": "Find clients by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
               "required": true,
               "type": "string",
               "schema": {
@@ -2047,6 +2112,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2063,6 +2134,16 @@
               "schema": {
                 "$ref": "#/definitions/Clients"
               }
+            },
+               {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
             }
           ]
         },
@@ -2076,6 +2157,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2092,6 +2179,16 @@
               "schema": {
                 "$ref": "#/definitions/Clients"
               }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
             }
           ]
         },
@@ -2105,6 +2202,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2131,6 +2234,16 @@
               "schema": {
                 "$ref": "#/definitions/Clients"
               }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
             }
           ]
         }
@@ -2146,7 +2259,13 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              }, "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
+
             }
           },
           "produces": [
@@ -2157,6 +2276,16 @@
               "name": "name",
               "in": "path",
               "description": "Find clients by name",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
               "required": true,
               "type": "string",
               "schema": {
@@ -2177,6 +2306,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/Clients"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2188,6 +2323,16 @@
               "name": "status",
               "in": "path",
               "description": "Find clients by status",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/Clients"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
               "required": true,
               "type": "string",
               "schema": {
@@ -2298,6 +2443,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/User"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             }
           },
@@ -2311,6 +2462,16 @@
               "description": " User by specified id",
               "required": true,
               "type": "integer",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorizaton token",
+              "required": true,
+              "type": "string",
               "schema": {
                 "$ref": "#/definitions/User"
               }
@@ -2393,11 +2554,29 @@
           "produces": [
             "application/json"
           ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Refresh token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
           "responses": {
             "201": {
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/User"
+              },
+               "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             },
             "400": {

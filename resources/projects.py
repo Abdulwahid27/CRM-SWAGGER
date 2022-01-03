@@ -150,10 +150,10 @@ class Filter(Resource):
         if not claims['is_admin']:
             return {"message": "Admin privelege required"}
 
-        client=ProjectModel.filter_by_name(name)
-        if client:
-            return client
-        return {"message":"no client with name {}".format(name)},400
+        project=ProjectModel.filter_by_name(name)
+        if project:
+            return project
+        return {"message":"no project with name {}".format(name)},400
 
 
 class FilterProfit(Resource):
