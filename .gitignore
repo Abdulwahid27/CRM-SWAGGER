@@ -42,8 +42,14 @@ MANIFEST
 *.manifest
 *.spec
 
-environment.env
+# Environments
+.venv
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
+environment.env
 
 # Installer logs
 pip-log.txt
