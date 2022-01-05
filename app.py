@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify
 from flask_restful import Api
 from models import user,client,projects,activities,sales,attendance,leads,task
 from resources.client import Client,SpecificClient,ClientName,FilterByName,ClientStatus
