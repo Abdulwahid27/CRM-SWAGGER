@@ -1304,7 +1304,7 @@
             {
               "name": "id",
               "in": "path",
-              "description": "deletes attendance by specified user id",
+              "description": "attendance by specified user id",
               "required": true,
               "type": "integer",
               "schema": {
@@ -1568,7 +1568,7 @@
            "parameters": [
             {
               "name": "Authorization",
-              "in": "body",
+              "in": "header",
               "description": "create projects",
               "required": true,
               "type": "string",
@@ -2369,6 +2369,16 @@
               "schema": {
                 "$ref": "#/definitions/User"
               }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "required": true,
+              "type": "string",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
             }
           ],
           "responses": {
@@ -2376,6 +2386,12 @@
               "description": "OK",
               "schema": {
                 "$ref": "#/definitions/User"
+              },
+              "headers": {
+                "Authorization": {
+                  "description": "token",
+                  "type": "string"
+                }
               }
             },
             "400": {
