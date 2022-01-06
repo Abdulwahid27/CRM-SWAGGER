@@ -1,7 +1,7 @@
 """Initial migrate
 
 Revision ID: 91b9e9fc9dc5
-Revises: 
+Revises:
 Create Date: 2021-12-16 22:26:08.100598
 
 """
@@ -37,13 +37,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
-    op.create_table('profits',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('project_name', sa.String(), nullable=True),
-    sa.Column('profit', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('project_name')
-    )
     op.create_table('Activities',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(), nullable=False),
@@ -71,7 +64,7 @@ def upgrade():
     sa.Column('status', sa.String(), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('date', sa.Date(), nullable=True),
-    sa.Column('profit', sa.Integer(), nullable=True),
+    sa.Column('percentage_profit', sa.INTEGER(), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['project_id'], ['Projects.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -117,7 +110,6 @@ def downgrade():
     op.drop_table('Sales')
     op.drop_table('Projects')
     op.drop_table('Activities')
-    op.drop_table('profits')
     op.drop_table('Leads')
     op.drop_table('Clients')
     # ### end Alembic commands ###
