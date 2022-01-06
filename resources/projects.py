@@ -49,7 +49,7 @@ class Projects(Resource):
         if not claims['is_admin']:
             return {"message": "Admin privelege required"}
 
-        projects=[project.json() for project in ProjectModel.find_by_all()]
+        projects=[x.json() for x in ProjectModel.find_by_all()]
         return {"projects":projects}
 
 class SpecificProject(Resource):
@@ -62,7 +62,7 @@ class SpecificProject(Resource):
 
         projects=ProjectModel.find_by_project_name(name)
         if projects:
-            return projects
+            return projects.json()
         return {"message":"no project found with name {} ".format(name)},400
 
     @jwt_required
