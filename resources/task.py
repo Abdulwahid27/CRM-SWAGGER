@@ -49,9 +49,8 @@ class Task(Resource):
 
     @jwt_required
     def get(self):
-        tasks=[x.json for x in TaskModel.find_by_all()]
-        return tasks,200
-
+        task=[y.json() for y in TaskModel.find_by_all()]
+        return {"tasks":task}
 
 class SpecificTask(Resource):
     @jwt_required
