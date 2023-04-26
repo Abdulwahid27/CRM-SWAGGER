@@ -23,7 +23,6 @@ api=Api(app)
 
 app.secret_key='1234'
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://mqcrooqblxiyhl:556c8cb12388e61962159913868bde6b6c22d4f852d0e6b5cbf98a920dab1ce8@ec2-34-193-235-32.compute-1.amazonaws.com:5432/da6542lh56vtu3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['PROPAGATE_EXCEPTIONS'] = True
