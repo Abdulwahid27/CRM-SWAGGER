@@ -1,0 +1,15 @@
+{
+	"builds":[
+		{
+			"src":"CRM.github.io/app.py",
+			"use":"@vercel/python"
+		}
+	],
+	"routes":[
+		{
+			"src":"/(.*)",
+			"dest":"CRM.github.io/app.py"
+		}
+
+	]
+}
